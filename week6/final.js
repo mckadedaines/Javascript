@@ -31,7 +31,7 @@ function randomSquare() {
 function addScore() {
     result++;
     score.textContent = result;
-    self.removeEventListener;
+    // self.removeEventListener;
 }
 
 function moveMole() {
