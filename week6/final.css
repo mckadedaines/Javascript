@@ -5,12 +5,13 @@
     flex-wrap: wrap;
 }
 
+.mole {
+    background-color: blue;
+}
+
 .square {
     height: 200px;
     width: 200px;
     border: solid black 1px;
 }
 
-.mole {
-    background-color: blue;
-}

@@ -1,4 +1,4 @@
-const squares = document.querySelector(".square");
+const squares = document.getElementsByClassName("square");
 const mole = document.querySelector(".mole");
 const timeLeft = document.querySelector("#time-left");
 const score = document.querySelector("#score");
@@ -7,30 +7,35 @@ let result = 0;
 let hitPosition;
 let currentTime = 60;
 let timerID = null;
+let rSquare = 0;
 
 function randomSquare() {
-    squares.forEach(square => {
-        square.classList.remove("mole");
-    })
 
-    let randomSquare = squares[Math.floor(Math.random() * 9)];
-    randomSquare.classList.add(".mole");
+    if (rSquare != 0) {
+        rSquare.removeEventListener("mousedown", addScore);
+    }
 
-    hitPosition = randomSquare.id;
+    rSquare = squares[Math.floor(Math.random() * 9)];
+    
+    for (i=0; i<9; i++){
+        if (squares[i].classList.contains("mole")) {
+            squares[i].classList.toggle("mole");
+        }
+    }
+
+    rSquare.classList.add("mole");
+
+    rSquare.addEventListener("mousedown", addScore);
 }
 
-squares.forEach(square => {
-    square.addEventListener('mousedown', () => {
-        if (square.id == hitPosition) {
-            result++;
-            score.textContent = result;
-            hitPosition = null;
-        }
-    })
-})
+function addScore() {
+    result++;
+    score.textContent = result;
+    self.removeEventListener;
+}
 
 function moveMole() {
-    timerID = setInterval(randomSquare, 1000);
+    timerID = setInterval(randomSquare, 500);
 }
 
 
